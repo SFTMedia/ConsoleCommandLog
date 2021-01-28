@@ -43,13 +43,22 @@ public class ConsoleCommandLog extends JavaPlugin implements Listener {
 											case "\"*\"":
 											case "'*'":
 												return true;
-										}
-										if (command.split(" ")[4].contains("luckperms")){ 
-											return true;
+											case "set":
+												if(command.split(" ").length>=6) {
+													switch(command.split(" ")[5]){
+														case "*":
+														case "\"*\"":
+														case "'*'":
+															return true;
+													}
+												}
 										}
 								}
 						}
 					}
+					break;
+				case "op":
+				case "deop":
 					return true;
 			}
 		}
