@@ -17,6 +17,9 @@ public class ConsoleCommandLog extends JavaPlugin implements Listener {
 		Bukkit.getPluginManager().registerEvents(this, this);
 	}
 	private boolean isMalicious(String command){
+		if(command.startsWith("/")){
+			command=command.substring(1);
+		}
 		if (command.contains(" ")){
 			switch (command.split(" ")[0]) {
 				case "lp":
@@ -50,9 +53,12 @@ public class ConsoleCommandLog extends JavaPlugin implements Listener {
 					return true;
 			}
 		}
-		return true;
+		return false;
 	}
 	private boolean isDangerous(String command){
+		if(command.startsWith("/")){
+			command=command.substring(1);
+		}
 		if (command.contains(" ")){
 			switch (command.split(" ")[0]) {
 				case "lp":
